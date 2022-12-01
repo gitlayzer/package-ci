@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script{
                     nodehome = tool "node"
-                    sh "${nodehome}/bin/npm ${buildShell}"
+                    sh "${nodehome}/bin/npm -v"
                 }
             }
         }
