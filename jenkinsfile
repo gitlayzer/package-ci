@@ -1,4 +1,4 @@
-@Library("jenkinslibrary"@master) _
+@Library("jenkinslibrary") _
 
 def build = new org.library.build()
 
