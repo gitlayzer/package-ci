@@ -38,8 +38,8 @@ pipeline {
         stage("NpnBuild") {
             steps {
                 script{
-                    npmehome = "/jenkins/software/node/"
-                    sh "${npmehome}/bin/npm ${buildShell}"
+                    npmehome = tool "node"
+                    sh "${npmehome}/bin/node -v"
                 }
             }
         }
