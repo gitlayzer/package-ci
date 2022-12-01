@@ -38,8 +38,8 @@ pipeline {
         stage("NpnBuild") {
             steps {
                 script{
-                    npmhome = tool "npm"
-                    sh "${npmhome}/bin/npm ${buildShell}"
+                    nodehome = tool "node"
+                    sh "${nodehome}/bin/npm ${buildShell}"
                 }
             }
         }
