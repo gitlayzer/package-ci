@@ -1,8 +1,9 @@
-@Library("jenkinslibrary") _
+@Library("jenkinslibrary"@master) _
 
 def build = new org.library.build()
 
 String buildShell = "${env.buildShell}"
+String buildType = "${env.buildType}"
 
 pipeline {
     agent {
