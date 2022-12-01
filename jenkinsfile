@@ -1,3 +1,7 @@
+@Library("jenkinslibrary"@master) _
+
+def build = new org.library.build()
+
 String buildShell = "${env.buildShell}"
 
 pipeline {
@@ -8,38 +12,10 @@ pipeline {
     }
     
     stages{
-        stage("MavenBuild") {
+        stage("Build") {
             steps {
                 script{
-                    mavenhome = tool "maven"
-                    sh "${mavenhome}/bin/mvn ${buildShell}"
-                }
-            }
-        }
-        
-        stage("AntBuild") {
-            steps {
-                script{
-                    anthome = tool "ant"
-                    sh "${anthome}/bin/ant ${buildShell}"
-                }
-            }
-        }
-        
-        stage("GradleBuild") {
-            steps {
-                script{
-                    gradlehome = tool "gradle"
-                    sh "${gradlehome}/bin/gradle ${buildShell}"
-                }
-            }
-        }
-        
-        stage("NpnBuild") {
-            steps {
-                script{
-                    npmehome = tool "node"
-                    sh "${npmehome}/bin/node -v"
+                    build.Build(buildType, buildShell)
                 }
             }
         }
