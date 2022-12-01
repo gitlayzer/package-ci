@@ -1,6 +1,7 @@
-@Library("jenkinslibrary") _
+@Library("jenkinslibrary@master") _
 
 def build = new org.library.build()
+def deploy = new org.library.deploy()
 
 String buildShell = "${env.buildShell}"
 String buildType = "${env.buildType}"
@@ -17,6 +18,16 @@ pipeline {
             steps {
                 script{
                     build.Build(buildType, buildShell)
+                }
+            }
+        }
+    }
+    
+    stages{
+        stage("Deploy") {
+            steps {
+                script{
+                    deploy.SaltDeploy(hosts,command)
                 }
             }
         }
