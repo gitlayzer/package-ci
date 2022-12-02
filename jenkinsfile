@@ -28,6 +28,12 @@ pipeline {
                     deploy.SaltDeploy(hosts,command)
                 }
             }
+            
+            steps {
+                script{
+                    deploy.AnsibleDeploy(hosts,command)
+                }
+            }
         }
     }
 }
