@@ -25,12 +25,6 @@ pipeline {
         stage("Deploy") {
             steps {
                 script{
-                    deploy.SaltDeploy(hosts,command)
-                }
-            }
-            
-            steps {
-                script{
                     deploy.AnsibleDeploy(hosts,command)
                 }
             }
