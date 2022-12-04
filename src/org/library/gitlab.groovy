@@ -8,7 +8,7 @@ def HttpRequest(requestType,requestUrl,requestBody) {
           maskValue: true,
           name: 'PRIVATE-TOKEN',
           value: "${gitlab}"]],
-          httpMode: requestType
+          httpMode: requestType,
           contentType: 'APPLIACTION_JSON',
           consoleLogResponseBody: true,
           ignoreSslErrors: true,
