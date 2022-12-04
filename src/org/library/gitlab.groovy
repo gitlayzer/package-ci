@@ -15,7 +15,7 @@ def HttpRequest(requestType,requestUrl,requestBody) {
 //    }
 //    return result
     withCredentials([string(credentialsId: 'gitlab-token', variable: 'gitlab')]) {
-        println (${gitlab})
+        println("${gitlab}")
     }
 }
 
