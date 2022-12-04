@@ -16,7 +16,7 @@ def HttpRequest(requestType,requestUrl,requestBody) {
 
 // 更改提交状态
 def ChangeCommitStatus(projectId,commitSha,status) {
-    commitApi = "/prijects/${projectId}/statuses/${commitSha}?state=${status}"
+    commitApi = "/projects/${projectId}/statuses/${commitSha}?state=${status}"
     response = HttpRequest("POST",commitApi,'')
     println(response) 
     return response
