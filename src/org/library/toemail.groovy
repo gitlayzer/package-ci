@@ -7,7 +7,7 @@ def Email(status,emailUser){
             <title>Alter</title>
         </head>
         <body marginheight="0" offset="0" style="text-align: center">
-            <img src="http://10.0.0.11:8080/static/c1130d2a/images/svgs/logo.svg" alt="logo" width="80" height="100">
+            <img src="https://www.jenkins.io/favicon.ico" alt="logo" width="80" height="100">
             <h2>项目名称: ${JOB_NAME}</h2>
             <h2>构建人：${emailUser}</h2>
             <h2>构建状态: ${status}</h2>
