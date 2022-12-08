@@ -4,7 +4,6 @@ package org.library
 def SonarScan(projectName,projectDescription,projectPath,version){
     def scannerHome = "/jenkins/software/sonar-scanner/"
     def sonarServer = "http://10.0.0.11:9000"
-    def qg = waitForQualityGate abortPipeline: true, credentialsId: 'sonarqube'
     sh """
     ${scannerHome}/bin/sonar-scanner -Dsonar.host.url=${sonarServer} \
                                      -Dsonar.projectKey=${projectName} \
@@ -21,6 +20,7 @@ def SonarScan(projectName,projectDescription,projectPath,version){
               # -Dsonar.java.test.binaries=target/test-classes \
               # -Dsonar.java.surefire.report=target/surefire-reports
     """
+    def qg = waitForQualityGate()
     if (qg.status != 'OK') {
         error "Pipeline aborted due to quality gate failure: ${qg.status}"
     }
