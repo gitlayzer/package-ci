@@ -4,7 +4,7 @@ package org.library
 def SonarScan(projectName,projectDescription,projectPath,version){
     def scannerHome = "/jenkins/software/sonar-scanner/"
     def sonarServer = "http://10.0.0.11:9000"
-    def qg = waitForQualityGate()
+    def qg = waitForQualityGate abortPipeline: true, credentialsId: 'sonarqube'
     sh """
     ${scannerHome}/bin/sonar-scanner -Dsonar.host.url=${sonarServer} \
                                      -Dsonar.projectKey=${projectName} \
