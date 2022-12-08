@@ -14,6 +14,4 @@ def SonarScan(projectName,projectDescription,projectPath,version){
                                          -Dsonar.java.binnaries=target/classes \
         """
     }
-    def qg = waitForQualityGate()
-    println("${qg}")
 }
