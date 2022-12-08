@@ -14,8 +14,5 @@ def SonarScan(projectName,projectDescription,projectPath,version){
                                          -Dsonar.java.binnaries=target/classes \
         """
     }
-    def qg = waitForQualityGate()
-    if (qg.status != 'OK') {
-        error "Pipeline aborted due to quality gate failure: ${qg.status}"
-    }
+    waitForQualityGate abortPipeline: true, credentialsId: 'sonarqube'
 }
