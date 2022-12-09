@@ -16,7 +16,7 @@ def HttpRequest(requestType,requestUrl,requestBody) {
 
 // 获取Sonar项目状态
 def GetProjectStatus(projectName) {
-    apiUrl = "/qualitygates/project_status?projectKey=${projectName}"
+    apiUrl = "qualitygates/project_status?projectKey=${projectName}"
     response = HttpRequest("GET",apiUrl,'')
 
     response = readJSON text: """${response.content}"""
