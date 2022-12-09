@@ -22,3 +22,16 @@ def GetProjectStatus(projectName) {
     response = response["branches"][0]["status"]["qualityGateStatus"]
     return response
 }
+
+// 搜索Sonar项目
+def SearchProject(projectName) {
+    apiUrl = "projects/search?projects=${projectName}"
+    response = HttpRequest("GET",apiUrl,'')
+    response = readJSON text: """${response.content}"""
+    response = response["paging"]["total"]
+    if (response.toString() == "0") {
+        return "false"
+    } else {
+        return "true"
+    }
+}
