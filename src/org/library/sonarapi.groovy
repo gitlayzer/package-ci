@@ -18,9 +18,6 @@ def HttpRequest(requestType,requestUrl,requestBody) {
 def GetProjectStatus(projectName) {
     apiUrl = "qualitygates/project_status?projectKey=${projectName}"
     response = HttpRequest("GET",apiUrl,'')
-
     response = readJSON text: """${response.content}"""
-    println(response)
-
     return response
 }
