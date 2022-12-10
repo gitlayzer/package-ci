@@ -44,8 +44,8 @@ def CreateProject(projectName) {
 }
 
 // 配置项目质量规则
-def SetSonarRule(language,qualityProfile,qualityProfile) {
-    apiUrl = "qualityprofiles/add_project?language=${language}&qualityProfile=${qualityProfile}&project=${qualityProfile}"
+def SetSonarRule(language,qualityProfile,projectName) {
+    apiUrl = "qualityprofiles/add_project?language=${language}&qualityProfile=${qualityProfile}&project=${projectName}"
     response = HttpRequest("POST",apiUrl,'')
     return response
 }
