@@ -49,3 +49,20 @@ def SetSonarRule(language,qualityProfile,projectName) {
     response = HttpRequest("POST",apiUrl,'')
     return response
 }
+
+// 获取质量阈ID
+def GetQualityGateID(gateName) {
+    apiUrl = "qualitygates/show?name=${gateName}"
+    response = HttpRequest("GET",apiUrl,'')
+    response = readJSON text: """${response.content}"""
+    response = response["id"]
+    return response
+}
+
+// 配置项目质量阈
+def SetQualitygates(projectKey,gateName) {
+    gateId = GetQualityGateID("${gateName}")
+    apiUrl = "qualitygates/select?projectKey=${projectKey}&gateId=${gateId}"
+    response = HttpRequest("POST",apiUrl,'')
+    return response
+}
